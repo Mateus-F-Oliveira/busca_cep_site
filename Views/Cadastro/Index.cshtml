@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Cadastro";
+}
+<div class="text-center">
+    <h1 class="display-4">Cadastro</h1>
+</div>
+<form>
+    <div class="mb-3">
+        <label for="inputNome" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="inputNome">
+    </div>
+    <div class="mb-3">
+        <label for="inputEmail" class="form-label">Email</label>
+        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="iPassword" class="form-label">Senha</label>
+        <input type="password" class="form-control" id="inputPassword">
+    </div>
+    <button type="submit" class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Index">Cadastrar e Acessar</button>
+</form>
+<div class="text-center">
+    <p>
+        Já possui uma conta?
+        <a type="button" class="nav-link text-blue" asp-area="" asp-controller="Acesso" asp-action="Index">Acessar</a> 
+    </p>
+</div>

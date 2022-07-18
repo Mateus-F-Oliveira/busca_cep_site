@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Home";
+    string user = "Fulano";
+}
+<div class="text-center">
+    <h1 class="display-4">Bem vindo @user</h1>
+    <p>
+        Sistema de Consulta de CEP
+    </p>
+</div>
+<form>
+    <div class="mb-3">
+        <label class="form-label">Informe o CEP</label>
+        <input type="text" class="form-control" id="cep" name="cep" value=""/>
+    </div>
+    <div>
+        <h2>
+            Resultado
+        </h2>
+        <p>
+            Rua
+        </p>
+        <input name="rua" type="text" id="rua" class="form-control"/>
+        <p>
+            Bairro
+        </p>
+        <input name="bairro" type="text" id="bairro" class="form-control"/>
+        <p>
+            Cidade
+        </p>
+        <input name="cidade" type="text" id="cidade" class="form-control"/>
+        <p>
+            Estado
+        </p>
+        <input name="uf" type="text" id="uf" class="form-control"/>
+        <p/>
+        <p/>
+        <p/>
+        <button type="reset" class="btn btn-primary" onclick="limpa_formulário_cep()">Limpar</button>
+        <p/>
+        <p/>
+        <p/>
+    </div>
+</form>
+<div class="text-center">
+    <button role="button" class="btn btn-primary">
+        Salvar Endereço
+    </button>
+    <a role="button", class="btn btn-primary" asp-area="" asp-controller="Salvos" asp-action="Index">
+        Endereços Salvos
+    </a>
+    <a role="button", class="btn btn-danger" asp-area="" asp-controller="Acesso" asp-action="Index">
+        Sair
+    </a>
+</div>

@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+    </script>
+    <title>@ViewData["Title"] - WebAppBuscaCepV2</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebAppBuscaCepV2.styles.css" asp-append-version="true" />
+    <script>
+        $(document).ready(function()
+        {
+            function limpa_formulário_cep()
+            {
+                $("#rua").val("");
+                $("#bairro").val("");
+                $("#cidade").val("");
+                $("#uf").val("");
+            }
+            $("#cep").blur(function() 
+            {
+                var cep = $(this).val().replace(/\D/g, '');
+                if (cep != "")
+                {
+                    var validacep = /^[0-9]{8}$/;
+                    if(validacep.test(cep))
+                    {
+                        $("#rua").val("...");
+                        $("#bairro").val("...");
+                        $("#cidade").val("...");
+                        $("#uf").val("...");
+                        $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados)
+                        {
+                            if (!("erro" in dados))
+                            {
+                                $("#rua").val(dados.logradouro);
+                                $("#bairro").val(dados.bairro);
+                                $("#cidade").val(dados.localidade);
+                                $("#uf").val(dados.uf);
+                            }
+                            else
+                            {
+                                alert("CEP não encontrado.");
+                            }
+                        });
+                    }
+                    else
+                    {
+                        alert("Formato de CEP inválido.");
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - WebAppBuscaCepV2
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Salvos";
+    string[] cepLista = { "valor1", "valor2", "valor3" };
+    string[] ruaLista = { "valor1", "valor2", "valor3" };
+    string[] bairroLista = { "valor1", "valor2", "valor3" };
+    string[] cidadeLista = { "valor1", "valor2", "valor3" };
+    string[] estadoLista = { "valor1", "valor2", "valor3" };
+    int iterator = 0;
+}
+<div class="text-center">
+    <h1 class="display-4">Lista de Itens Salvos</h1>
+</div>
+<p></p>
+<p></p>
+<a role="button" class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Index">
+    Voltar para o buscador
+</a>
+<p></p>
+<p></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">CEP</th>
+            <th scope="col">Rua</th>
+            <th scope="col">Bairro</th>
+            <th scope="col">Cidade</th>
+            <th scope="col">Estado</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+    @for (iterator = 0; iterator < cepLista.Length; iterator++)
+    {
+        <tr>
+            <th scope="row">
+                @cepLista[iterator]
+            </th>
+            <td>
+                @ruaLista[iterator]
+            </td>
+            <td>
+                @bairroLista[iterator]
+            </td>
+            <td>
+                @cidadeLista[iterator]
+            </td>
+            <td>
+                @estadoLista[iterator]
+            </td>
+            <td>
+                <a role="button" class="btn btn-danger">
+                    Excluir
+                </a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
